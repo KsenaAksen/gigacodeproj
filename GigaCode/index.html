@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17143b">
+    <title>Мой звёздный дневник</title>
+    <link rel="stylesheet" href="css/style.css"
+    <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <p class="eyebrow">Твоя маленькая вселенная</p>
+        <h1>🌟 Мой звёздный дневник</h1>
+        <p class="subtitle">Каждый день — новое приключение. Запиши, каким он был!</p>
+      </header>
+
+      <main>
+        <section class="card day-card" aria-labelledby="day-heading">
+          <div class="section-heading">
+            <span class="section-icon" aria-hidden="true">🌙</span>
+            <div>
+              <p class="eyebrow">Один маленький вопрос</p>
+              <h2 id="day-heading">Как прошёл день?</h2>
+            </div>
+          </div>
+
+          <fieldset class="mood-fieldset">
+            <legend>Выбери настроение</legend>
+            <div class="mood-options">
+              <button class="mood-button" type="button" aria-pressed="false">
+                <span class="mood-emoji" aria-hidden="true">😊</span>
+                <span>Отлично</span>
+              </button>
+              <button class="mood-button" type="button" aria-pressed="false">
+                <span class="mood-emoji" aria-hidden="true">🙂</span>
+                <span>Хорошо</span>
+              </button>
+              <button class="mood-button" type="button" aria-pressed="false">
+                <span class="mood-emoji" aria-hidden="true">😐</span>
+                <span>Нормально</span>
+              </button>
+              <button class="mood-button" type="button" aria-pressed="false">
+                <span class="mood-emoji" aria-hidden="true">😢</span>
+                <span>Грустно</span>
+              </button>
+            </div>
+          </fieldset>
+
+          <label class="note-label" for="day-note">Хочешь что-нибудь рассказать?</label>
+          <textarea
+            id="day-note"
+            name="day-note"
+            rows="4"
+            placeholder="Напиши о самом интересном..."
+          ></textarea>
+          <button class="save-button" type="button">Сохранить день ⭐</button>
+        </section>
+
+        <section class="card stars-card" aria-labelledby="stars-heading">
+          <div class="section-heading">
+            <span class="section-icon" aria-hidden="true">✨</span>
+            <div>
+              <p class="eyebrow">Ты уже столько всего сделал!</p>
+              <h2 id="stars-heading">Мои звёздочки</h2>
+            </div>
+          </div>
+          <dl class="stats">
+            <div class="stat">
+              <dt>Дни</dt>
+              <dd>0</dd>
+            </div>
+            <div class="stat">
+              <dt>Звёзды</dt>
+              <dd>0 <span aria-hidden="true">⭐</span></dd>
+            </div>
+            <div class="stat">
+              <dt>Серия</dt>
+              <dd>0 <span class="stat-unit">дней</span></dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="card history-card" aria-labelledby="history-heading">
+          <div class="section-heading">
+            <span class="section-icon" aria-hidden="true">📖</span>
+            <div>
+              <p class="eyebrow">Твои воспоминания</p>
+              <h2 id="history-heading">История</h2>
+            </div>
+          </div>
+          <ul class="history-list">
+            <li class="empty-state">Пока пусто — сохрани первый день!</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Пусть каждый день сияет по-своему ✨</p>
+      </footer>
+    </div>
+
+    <dialog class="notice-dialog" aria-labelledby="notice-title" aria-describedby="notice-message">
+      <div class="notice-card">
+        <h2 id="notice-title">Привет!</h2>
+        <p id="notice-message"></p>
+        <button class="notice-close-button" type="button">Понятно</button>
+      </div>
+    </dialog>
+
+    <script src="../js/app.js"></script>
+  </body>
+</html>
