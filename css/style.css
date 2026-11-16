@@ -300,6 +300,13 @@ textarea::placeholder {
   gap: 0.75rem;
 }
 
+.history-entry-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .history-entry-heading h3 {
   margin: 0;
   font-size: 1.05rem;
@@ -309,6 +316,29 @@ textarea::placeholder {
   flex: 0 0 auto;
   color: var(--muted);
   font-size: 0.85rem;
+}
+
+.delete-entry-button {
+  padding: 0.4rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.delete-entry-button:hover {
+  border-color: rgba(255, 107, 107, 0.65);
+  background: rgba(255, 107, 107, 0.14);
+  color: #ff9b9b;
+}
+
+.delete-entry-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .history-note {
@@ -351,6 +381,11 @@ textarea::placeholder {
     align-items: flex-start;
     flex-direction: column;
     gap: 0.3rem;
+  }
+
+  .history-entry-actions {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 
