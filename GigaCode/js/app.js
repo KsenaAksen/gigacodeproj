@@ -127,7 +127,7 @@ function renderHistory() {
     return;
   }
 
-  entries.forEach((entry) => {
+  entries.forEach((entry, index) => {
     const item = document.createElement("li");
     item.className = "history-entry";
 
@@ -145,7 +145,31 @@ function renderHistory() {
       year: "numeric",
     });
 
-    heading.append(mood, date);
+    const actions = document.createElement("div");
+    actions.className = "history-entry-actions";
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete-entry-button";
+    deleteButton.type = "button";
+    deleteButton.setAttribute("aria-label", `Удалить запись: ${entry.mood}`);
+    deleteButton.textContent = "🗑️ Удалить";
+    deleteButton.addEventListener("click", () => {
+      const updatedEntries = entries.filter((_, entryIndex) => entryIndex !== index);
+
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedEntries));
+      } catch (error) {
+        console.error("Не удалось удалить запись дневника.", error);
+        window.alert("Не получилось удалить запись. Проверь настройки хранилища браузера и попробуй ещё раз.");
+        return;
+      }
+
+      entries = updatedEntries;
+      render();
+    });
+
+    actions.append(date, deleteButton);
+    heading.append(mood, actions);
     item.append(heading);
 
     if (entry.note) {
