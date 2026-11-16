@@ -5,10 +5,25 @@ const saveButton = document.querySelector(".save-button");
 const noteField = document.querySelector("#day-note");
 const historyList = document.querySelector(".history-list");
 const statValues = document.querySelectorAll(".stats .stat dd");
+const noticeDialog = document.querySelector(".notice-dialog");
+const noticeMessage = document.querySelector("#notice-message");
+const noticeCloseButton = document.querySelector(".notice-close-button");
 
 let selectedMood = null;
 let entries;
 let storageReady = false;
+
+function showNotice(message) {
+  noticeMessage.textContent = message;
+
+  if (!noticeDialog.open) {
+    noticeDialog.showModal();
+  }
+}
+
+noticeCloseButton.addEventListener("click", () => {
+  noticeDialog.close();
+});
 
 function toDateKey(date) {
   const year = date.getFullYear();
@@ -160,7 +175,7 @@ function renderHistory() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedEntries));
       } catch (error) {
         console.error("Не удалось удалить запись дневника.", error);
-        window.alert("Не получилось удалить запись. Проверь настройки хранилища браузера и попробуй ещё раз.");
+        showNotice("Не получилось удалить запись. Проверь настройки хранилища браузера и попробуй ещё раз.");
         return;
       }
 
@@ -210,7 +225,7 @@ saveButton.addEventListener("click", () => {
   }
 
   if (selectedMood === null) {
-    window.alert("Сначала выбери настроение 🙂");
+    showNotice("Сначала выбери настроение 🙂");
     return;
   }
 
@@ -226,7 +241,7 @@ saveButton.addEventListener("click", () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedEntries));
   } catch (error) {
     console.error("Не удалось сохранить запись дневника.", error);
-    window.alert("Не получилось сохранить запись. Проверь настройки хранилища браузера и попробуй ещё раз.");
+    showNotice("Не получилось сохранить запись. Проверь настройки хранилища браузера и попробуй ещё раз.");
     return;
   }
 
@@ -240,7 +255,7 @@ try {
   storageReady = true;
 } catch (error) {
   console.error("Не удалось загрузить записи дневника.", error);
-  window.alert("Не удалось загрузить дневник: данные в хранилище повреждены или недоступны.");
+  showNotice("Не удалось загрузить дневник: данные в хранилище повреждены или недоступны.");
   saveButton.disabled = true;
   moodButtons.forEach((button) => {
     button.disabled = true;
