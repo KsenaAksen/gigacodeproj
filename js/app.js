@@ -167,7 +167,7 @@ function renderHistory() {
     deleteButton.className = "delete-entry-button";
     deleteButton.type = "button";
     deleteButton.setAttribute("aria-label", `Удалить запись: ${entry.mood}`);
-    deleteButton.textContent = "🗑️ Удалить";
+    deleteButton.textContent = "🗑️";
     deleteButton.addEventListener("click", () => {
       const updatedEntries = entries.filter((_, entryIndex) => entryIndex !== index);
 
